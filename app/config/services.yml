@@ -8,6 +8,7 @@ services:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
 
+#Utlisation du service extension twig pour les chaines de caractères
 services:
     twig.extension.text:
        class: Twig_Extensions_Extension_Text
