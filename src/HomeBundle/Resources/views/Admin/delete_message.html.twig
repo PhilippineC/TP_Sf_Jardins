@@ -1,0 +1,35 @@
+{% extends "HomeBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Supprimer un message
+{% endblock %}
+
+{% block header_body %}
+    <header >
+        {{ parent() }}
+    </header>
+{% endblock %}
+
+
+{% block body %}
+    <div class="well">
+        <h4> Etes-vous certain de vouloir supprimer ce message ?</h4><br />
+            <p>Nom : {{ message.nom }}</p>
+            <p>Email : {{ message.email }}</p>
+            <p>Date de publication : {{ message.date|date('Y-m-d H:i:s') }}</p>
+            <p>Message : {{ message.message }}</p>
+            <br/>
+
+        <div class="btn col-sm-offset-3">
+            <form action="{{ path('admin_delete_message', {'id': message.id}) }}" method="post">
+                <a href="{{ path('admin') }}" class="btn btn-default">
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                    Retour à l'espace d'administration
+                </a>
+                <input type="submit" value="Supprimer" class="btn btn-danger" />
+                {# Ceci va générer le champ CSRF #}
+                {{ form_rest(form) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

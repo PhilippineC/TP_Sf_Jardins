@@ -1,0 +1,21 @@
+{% extends "HomeBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Editer une photo
+{% endblock %}
+
+{% block header_body %}
+    <header>
+        {{ parent() }}
+    </header>
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="well">
+        <h4>Modifier une photo de la galerie</h4>
+        {{ include("HomeBundle:Admin:form_photo.html.twig") }}
+    </div>
+
+{% endblock %}

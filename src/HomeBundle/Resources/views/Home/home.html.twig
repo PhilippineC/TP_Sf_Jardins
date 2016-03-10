@@ -1,0 +1,110 @@
+{# src/HomeBundle/Resources/views/Default/home.html.twig #}
+
+{% extends "HomeBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block header %}
+    <header>
+        <div class="navbar-collapse connexion">
+            <!-- formulaire de connexion à l'espace Admin -->
+
+            <form action="{{ path('login_check') }}" method="post" class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" id="username" name="_username" placeholder="login"/>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" id="password" name="_password" placeholder="Mot de passe" />
+                </div>
+
+                <button type="submit" class="btn btn-sm btn-success">Connexion</button>
+            </form>
+        </div>
+
+            <div class="banniere">
+                <nav>
+                    <ul>
+                        <li class="logo">
+                            <img src="{{ asset('bundles/home/images/logo.png') }}" alt="Logo" title="Les Jardins d'OpenClassrooms" />
+                        </li>
+                        <li class="right"> <a href="#services">Nos services</a></li>
+                        <li class="right"> <a href="#produits">Nos produits</a></li>
+                        <li class="right"> <a href="#equipe">Notre équipe</a></li>
+                        <li class="right"> <a href="#references">Nos références</a></li>
+                        <li class="right"> <a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+    </header>
+{% endblock %}
+
+{% block body %}
+    {% block messages_erreur %}
+        <!-- ******************AFFICHAGE DES MESSAGES D'ERREURS ********************-->
+        {% if error %}
+            <div class="alert alert-danger">{{ error.message }}</div>
+        {% endif %}
+    {% endblock %}
+
+    {{ parent() }}
+
+    {% block home_body %}
+        {{ include("HomeBundle:Home:services.html.twig") }}
+        {{ include("HomeBundle:Home:produits.html.twig") }}
+        {{ include("HomeBundle:Home:equipe.html.twig") }}
+        {{ include("HomeBundle:Home:contact.html.twig") }}
+    {% endblock %}
+
+{% endblock %}
+
+{% block footer %}
+    <footer>
+        <div class="footer1">
+            <div class="bloc_footer1">
+                <div class="menu_footer1">
+                    <p>Nos confrères</p>
+                    <ul>
+                        <li> <a href='www.valerie.com'> Les jardins de Valérie </a> </li>
+                        <li> <a href='www.mustafa.com'> L'arrosoir de Mustafa </a> </li>
+                        <li> <a href='www.jouvence.com'> La fontaine de jouvence </a> </li>
+                        <li> <a href='www.cygnes.com'> Le lac des cygnes </a> </li>
+                    </ul>
+                </div>
+                <div class="menu_footer1">
+                    <p>Nos sous-traitants</p>
+                    <ul>
+                        <li> <a href='www.pelousetoulouse.com'> La pelouse de Toulouse </a></li>
+                        <li> <a href='www.desherbantsmarais.com'>Les desherbants du Marais </a></li>
+                        <li> <a href='www.outilsgilbert.com'> Les outils Gilbert </a> </li>
+                    </ul>
+                </div>
+                <div class="menu_footer1">
+                    <p>Nos associés</p>
+                    <ul>
+                        <li> <a href='www.jalon.com'> Entreprise Jalon </a></li>
+                        <li> <a href='www.societegres.com'>Société des grès </a></li>
+                    </ul>
+                </div>
+                <div class="menu_footer1">
+                    <p>Les investisseurs</p>
+                    <ul>
+                        <li> <a href='www.dada.com'> Banque DADA </a></li>
+                        <li> <a href='www.SDA.com'> Société des assurances </a></li>
+                        <li> <a href='www.gra.com'> Assurance GRA </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer2">
+            <p>Copyright, ce site est la propriété d'OpenClassrooms réalisé par Philippine CHOMBART dans le cadre du TP Les Jardins. Merci !</p>
+        </div>
+    </footer>
+{% endblock %}
+
+

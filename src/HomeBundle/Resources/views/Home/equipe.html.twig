@@ -1,0 +1,90 @@
+{# src/HomeBundle/Resources/views/Default/equipe.html.twig #}
+
+<!-- ******************SECTION 3 : NOTRE EQUIPE ********************-->
+<section>
+    <div class="titre_equipe">
+        <h1 id="equipe">Notre équipe</h1>
+        <p> Passionnés de jardin et de nature depuis qu'ils sont tout petits, paysagistes de formation, nos hommes mettront tout en oeuvre pour vous satisfaire. <br/> Vous trouverez forcèment votre bonheur parmi les spécialités proposées par nos paysagistes !</p> <br/>
+    </div>
+
+    <div class="texte_equipe">
+        <p> Ils sont faciles à reconnaître : ils ont toujours leur appareil photo entre les mains. Ils sont attentifs à chaque détail qui va faire la différence et apporter la touche personnelle à votre projet. <br />
+            Les jardins que notre équipe vous propose sont vivants, facile à vivre, praticables aussi bien avec des personnes agées que de jeunes enfants. D'ailleurs, pour ces derniers, notre équipe peut vous proposer des aménagements spéciales à leur encontre tel que des cabanes, des cachettes, des terrains de jeux, le tout sans jamais quitter des yeux l'objectif premier : l'harmonie de votre jardin. <br />
+            Vous pouvez vous rendre sur les pages des réseaux sociaux de nos paysagistes, vous y trouverez des astuces, des réalisations, des coups de coeur, les dates des prochaines fêtes de plantes près de chez vous, des gros plans de fleurs fraîches et colorées, ainsi que des forums surlequels vous pouvez participer. </p>
+    </div>
+
+
+    <!-- ******************SOUS SECTION 3 : NOS PAYSAGISTES ********************-->
+    <div class="sousmenu_equipe">
+        <div class="titre_sousmenu_equipe">
+            <h1>Nos paysagistes </h1>
+            <h3>spécialistes de votre jardin </h3>
+        </div>
+        <div class="liste_profils">
+            {% for employe in listEmployes %}
+                <div class="profil">
+                    <h2> {{ employe.nom }} </h2>
+                    <img src="{{ asset(employe.photo) }}" alt="{{ employe.nom }}" />
+                    <p>Kévin est spécialiste de l'aménagement des allées : sinueuse et longiligne.</p>
+                    <div class="ico">
+                        <a href="{{ asset(employe.twitter) }}"> <img src="{{ asset('bundles/home/images/twitterN.png') }}" alt="twitter"> </a>
+                        <a href="{{ asset(employe.facebook) }}"> <img src="{{ asset('bundles/home/images/facebookN.png') }}" alt="facebook"> </a>
+                        <a href="{{ asset(employe.linkedin) }}"> <img src="{{ asset('bundles/home/images/linkedin.png') }}" alt="linkedin"> </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="fleche">
+            <a href=""> <img src="{{ asset('bundles/home/images/preview.png') }}" alt=""/> </a>
+            <a href=""> <img src="{{ asset('bundles/home/images/next.png') }}" alt=""/> </a>
+        </div>
+    </div>
+
+
+    <!-- ******************SOUS SECTION 3 : TEMOIGNAGES ********************-->
+    <div class="sousmenu3">
+        <h1>Témoignages de nos clients </h1>
+        <div class="temoignage">
+            <div class="client">
+                <div class="photo_client">
+                    <img src="{{ asset('bundles/home/images/client.jpg') }}" alt="Client" />
+                </div>
+                <div class="nom_client">
+                    <p> Violette Sanom </p>
+                    <div class="fleche2">
+                        <a href=""> <img src="{{ asset('bundles/home/images/preview.png') }}" alt=""/> </a>
+                        <a href=""> <img src="{{ asset('bundles/home/images/next.png') }}" alt=""/> </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bloc_temoignage">
+                <div class="texte_temoignage">
+                    <p>"Dès que je les ai apercue avec leur rateau et leur sécateur, j'ai tout de suite compris à qui j'avais affaire : une équipe de professionnels prêts à tout pour arriver à leur objectif final : me satisfaire. <br /> Ils ont très vite lu en moi comme dans un livre ouvert et ont compris rapidement ce que je désirais. Aujourd'hui, je suis très satisfaite du résultat et n'hésiterais pas à les rappeler pour un prochain besoin. Merci à vous ! (spécialement à Brandon)"</p>
+                </div>
+                <div class="sous_temoignage">
+                    <div class="fleche_grise">
+                        <img src="{{ asset('bundles/home/images/flechegrise.png') }}" alt="" />
+                    </div>
+                    <div class="trait_noir">
+                        <img src="{{ asset('bundles/home/images/trait_noir.png') }}" alt="" />
+                    </div>
+                    <p>Son témoignage, gage de qualité</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ******************SOUS SECTION 3 : REFERENCES ********************-->
+    <div class="sousmenu3">
+        <h1 id="references">Nos références </h1>
+        <div class="realisations_photos">
+            <a href="{{ asset('bundles/home/images/real1.jpg') }}"> <img src="{{ asset('bundles/home/images/real1.jpg') }}" alt="Exemple de jardin réalisé par Les Jardins d'OpenClassrooms" title="Cliquez pour agrandir" /> </a>
+            <a href="{{ asset('bundles/home/images/real2.jpg') }}"> <img src="{{ asset('bundles/home/images/real2.jpg') }}" alt="Exemple de jardin réalisé par Les Jardins d'OpenClassrooms" title="Cliquez pour agrandir" /> </a>
+            <a href="{{ asset('bundles/home/images/real3.jpg') }}"> <img src="{{ asset('bundles/home/images/real3.jpg') }}" alt="Exemple de jardin réalisé par Les Jardins d'OpenClassrooms" title="Cliquez pour agrandir" /> </a>
+            <a href="{{ asset('bundles/home/images/real4.jpg') }}"> <img src="{{ asset('bundles/home/images/real4.jpg') }}" alt="Exemple de jardin réalisé par Les Jardins d'OpenClassrooms" title="Cliquez pour agrandir" /> </a>
+        </div>
+    </div>
+</section>
+
+<!--     ***************************************************** -->

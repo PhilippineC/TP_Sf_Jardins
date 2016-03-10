@@ -1,0 +1,11 @@
+services:
+#    home.example:
+#        class: HomeBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+
+services:
+    doctrine.user_listener:
+        class: HomeBundle\Doctrine\UserListener
+        arguments: ["@security.encoder_factory"]
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }

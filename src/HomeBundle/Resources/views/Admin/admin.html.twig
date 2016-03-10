@@ -1,0 +1,162 @@
+{# src/HomeBundle/Resources/views/Default/admin.html.twig #}
+
+{% extends "HomeBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Espace Admin
+{% endblock %}
+
+{% block header %}
+    <div class="header_admin">
+        <div class="titre_principal">
+            <strong>Bienvenue dans l'espace Administration des Jardins d'OpenClassrooms</strong>
+        </div>
+        {#lien de déconnexion#}
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <a class="btn btn-warning col-md-offset-5" href="{{ path('logout') }}" role="button">Déconnexion</a>
+        {% endif %}
+        <hr>
+    </div>
+{% endblock %}
+
+{% block body %}
+
+    {{ parent() }}
+
+    <!-- ****************GALERIE ****************************************************************-->
+    <div class="container-fluid">
+         <div class="titre_section"> Galerie des services</div><br/>
+        <a class="btn btn-primary btn-sm" href="{{ path('admin_add_photo') }}">Ajouter une photo</a><p></p>
+                <table class="table table-bordered table-striped table-condensed table-hover">
+                    <tbody>
+                    <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Description</th>
+                        <th class="text-center">Photo</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                    </thead>
+
+                    {% for photo in listPhotos %}
+                        <tr>
+                            <td class="col-md-3">{{ photo.titre}}</td>
+                            <td class="col-md-3">{{ photo.description}}</td>
+                            <td class="col-md-3 text-center"><img src="{{ asset(photo.urlmin)}}"/></td>
+                            <td class="col-md-3 text-center">
+                                <a class="btn btn-warning btn-sm" href="{{ path('admin_edit_photo', {'id': photo.id}) }}">Modifier</a>
+                                <a class="btn btn-danger btn-sm" href="{{ path('admin_delete_photo', {'id': photo.id}) }}">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+    </div>
+    <hr>
+<!--************************************************************************************************ -->
+
+
+<!-- ****************PRODUITS ****************************************************************-->
+    <div class="container-fluid">
+        <div class="titre_section"> Les produits </div><br/>
+        <a class="btn btn-primary btn-sm" href="{{ path('admin_add_produit') }}">Ajouter un produit</a><p></p>
+                <table class="table table-bordered table-striped table-condensed table-hover">
+                    <tbody>
+                    <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Description</th>
+                        <th class="text-center">Photo</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                    </thead>
+
+                    {% for produit in listProduits %}
+                        <tr>
+                            <td class="col-md-3">{{ produit.nom}}</td>
+                            <td class="col-md-3">{{ produit.description}}</td>
+                            <td class="col-md-3 text-center"><img src="{{ asset(produit.urlmin)}}"/></td>
+                            <td class="col-md-3 text-center">
+                                <a class="btn btn-warning btn-sm" href="{{ path('admin_edit_produit', {'id': produit.id}) }}">Modifier</a>
+                                <a class="btn btn-danger btn-sm" href="{{ path('admin_delete_produit', {'id': produit.id}) }}">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+    </div>
+    <hr>
+    <!--************************************************************************************************ -->
+
+    <!-- ****************PROFILS ****************************************************************-->
+    <div class="container-fluid">
+        <div class="titre_section"> Gestion des profils</div><br/>
+        <a class="btn btn-primary btn-sm" href="{{ path('admin_add_profil') }}">Ajouter un profil</a><p></p>
+                <table class="table table-bordered table-striped table-condensed table-hover">
+                    <tbody>
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Métier</th>
+                        <th>Biographie</th>
+                        <th>Twitter</th>
+                        <th>Facebook</th>
+                        <th>Linkedin</th>
+                        <th class="text-center">Photo</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                    </thead>
+
+                    {% for employe in listEmployes %}
+                        <tr>
+                            <td class="col-md-1">{{ employe.nom}}</td>
+                            <td class="col-md-1">{{ employe.metier}}</td>
+                            <td class="col-md-2">{{ employe.biographie}}</td>
+                            <td class="col-md-1">{{ employe.twitter| wordwrap(10) | nl2br }}</td>
+                            <td class="col-md-1">{{ employe.facebook| wordwrap(10) | nl2br}}</td>
+                            <td class="col-md-1">{{ employe.linkedin| wordwrap(10) | nl2br}}</td>
+                            <td class="col-md-2 text-center"><img src="{{ asset(employe.photo)}}"/></td>
+                            <td class="col-md-3 text-center">
+                                <a class="btn btn-warning btn-sm" href="{{ path('admin_edit_profil', {'id': employe.id}) }}">Modifier</a>
+                                <a class="btn btn-danger btn-sm" href="{{ path('admin_delete_profil', {'id': employe.id}) }}">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+    </div>
+    <hr>
+    <!--************************************************************************************************ -->
+
+    <!-- ****************MESSAGES ****************************************************************-->
+    <div class="container-fluid">
+        <div class="titre_section">Gestion des messages</div><br/>
+               <table class="table table-bordered table-striped table-condensed table-hover">
+                    <tbody>
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Date de publication</th>
+                        <th>Message</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+
+                    {% for message in listMessages %}
+                        <tr>
+                            <td class="col-md-1">{{ message.nom}}</td>
+                            <td class="col-md-1">{{ message.email}}</td>
+                            <td class="col-md-2">{{ message.date|date('Y-m-d H:i:s')}}</td>
+                            <td class="col-md-7">{{ message.message}}</td>
+                            <td class="col-md-1">
+                                <a class="btn btn-danger btn-sm" href="{{ path('admin_delete_message', {'id': message.id}) }}">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+    </div>
+    <hr>
+    <!--************************************************************************************************ -->
+{% endblock %}

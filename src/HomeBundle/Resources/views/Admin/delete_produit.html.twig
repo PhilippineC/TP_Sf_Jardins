@@ -1,0 +1,34 @@
+{% extends "HomeBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Supprimer un produit
+{% endblock %}
+
+{% block header_body %}
+    <header >
+        {{ parent() }}
+    </header>
+{% endblock %}
+
+
+{% block body %}
+    <div class="well">
+        <h4>
+            Etes-vous certain de vouloir supprimer ce produit "{{ produit.nom }}" ?
+            <p><br /><strong>Description : {{ produit.description }}</strong></p>
+            <p></strong><img src="{{ asset(produit.url)}}"/></p>
+            <br/></h4>
+
+        <div class="btn col-sm-offset-3">
+            <form action="{{ path('admin_delete_produit', {'id': produit.id}) }}" method="post">
+                <a href="{{ path('admin') }}" class="btn btn-default">
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                    Retour à l'espace d'administration
+                </a>
+                <input type="submit" value="Supprimer" class="btn btn-danger" />
+                {# Ceci va générer le champ CSRF #}
+                {{ form_rest(form) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

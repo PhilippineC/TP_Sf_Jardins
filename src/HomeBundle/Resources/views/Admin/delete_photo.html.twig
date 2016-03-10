@@ -1,0 +1,35 @@
+{% extends "HomeBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Supprimer une photo
+{% endblock %}
+
+{% block header_body %}
+    <header >
+        {{ parent() }}
+    </header>
+{% endblock %}
+
+
+{% block body %}
+    <div class="well">
+        <h4>
+            Etes-vous certain de vouloir supprimer cette photo "{{ photo.titre }}" ?
+            <p><br /><strong>Description : {{ photo.description }}</strong></p>
+            <p></strong><img src="{{ asset(photo.url)}}"/></p>
+        <br/></h4>
+
+
+        <div class="btn col-sm-offset-3">
+            <form action="{{ path('admin_delete_photo', {'id': photo.id}) }}" method="post">
+                <a href="{{ path('admin') }}" class="btn btn-default">
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                    Retour à l'espace d'administration
+                </a>
+                <input type="submit" value="Supprimer" class="btn btn-danger" />
+                {# Ceci va générer le champ CSRF #}
+                {{ form_rest(form) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{# src/HomeBundle/Resources/views/Home/services.html.twig #}
+
+<!-- ******************SECTION 1 : NOS SERVICES ********************-->
+
+<section>
+    <h1 id="services">Nos services </h1>
+    <p>Professionnels du jardin depuis plus de 20 ans, nous vous accompagnons dans l'aménagement et l'entretien de votre espace extérieur. Nous concevons pour vous un projet d'aménagement extérieur sur-mesure et vous accompagnons pour la réalisation. Nous créons pour vous le plan de votre jardin en 3D, les plans de plantation et les visuels des plantes qui vous permettront de réaliser votre jardin en toute autonomie. Nous vous proposons également l'entretien de vos espaces verts. Voici deux exemples de réalisation.</p>
+    <div class="realisations">
+
+        {% for photo in listPhotos %}
+            <a href="{{ asset(photo.url)}}"><img src="{{ asset(photo.url)}}" alt="Exemple de jardin réalisé par Les Jardins d'OpenClassrooms" title="Cliquez pour agrandir" /></a>
+        {% endfor %}
+    </div>
+</section>
+
+<!--     ***************************************************** -->

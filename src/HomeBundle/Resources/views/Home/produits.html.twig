@@ -1,0 +1,20 @@
+{# src/HomeBundle/Resources/views/Default/produits.html.twig #}
+
+<!-- ******************SECTION 2 : NOS PRODUITS ********************-->
+<section>
+    <div class="produits">
+        <h1 id="produits">Nos produits</h1>
+    </div>
+
+    <div class="contenu_produits">
+        {% for produit in listProduits %}
+            <div class="bloc_produits">
+                <img src="{{ asset(produit.url) }}" alt="{{ produit.alt }}"/>
+                <h2> {{ produit.nom }} </h2>
+                <p> {{ produit.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!--     ***************************************************** -->

@@ -1,0 +1,13 @@
+login:
+    path:   /
+    defaults:  { _controller: HomeBundle:Home:home }
+
+home:
+    resource: "@HomeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+login_check:
+    path:   /login_check
+
+logout:
+    path:   /logout

@@ -1,0 +1,61 @@
+home:
+        path:     /
+        defaults: { _controller: HomeBundle:Home:home }
+
+admin:
+        path:     /admin
+        defaults: { _controller: HomeBundle:Home:admin }
+
+admin_add_profil:
+        path:     /admin/add_profil
+        defaults: { _controller: HomeBundle:Admin:add }
+
+admin_add_photo:
+        path:     /admin/add_photo
+        defaults: { _controller: HomeBundle:Admin:add }
+
+admin_add_produit:
+        path:     /admin/add_produit
+        defaults: { _controller: HomeBundle:Admin:add }
+
+admin_delete_photo:
+        path:     /admin/delete_photo/{id}
+        defaults: { _controller: HomeBundle:Admin:delete_photo }
+        requirements:
+            id : \d+
+
+admin_edit_photo:
+        path:     /admin/edit_photo/{id}
+        defaults: { _controller: HomeBundle:Admin:edit_photo }
+        requirements:
+            id : \d+
+
+admin_delete_produit:
+        path:     /admin/delete_produit/{id}
+        defaults: { _controller: HomeBundle:Admin:delete_produit }
+        requirements:
+            id : \d+
+
+admin_edit_produit:
+        path:     /admin/edit_produit/{id}
+        defaults: { _controller: HomeBundle:Admin:edit_produit }
+        requirements:
+            id : \d+
+
+admin_delete_profil:
+        path:     /admin/delete_profil/{id}
+        defaults: { _controller: HomeBundle:Admin:delete_profil }
+        requirements:
+            id : \d+
+
+admin_edit_profil:
+        path:     /admin/edit_profil/{id}
+        defaults: { _controller: HomeBundle:Admin:edit_profil }
+        requirements:
+            id : \d+
+
+admin_delete_message:
+        path:     /admin/delete_message/{id}
+        defaults: { _controller: HomeBundle:Admin:delete_message }
+        requirements:
+            id : \d+
