@@ -4,6 +4,7 @@ namespace HomeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Eventviva\ImageResize;
 
 /**
  * Employe
@@ -71,6 +72,13 @@ class Employe
      */
     private $photo;
     private $file;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photomin", type="string", length=255)
+     */
+    private $photomin;
 
     /**
      * Get id
@@ -275,7 +283,8 @@ class Employe
 
         // On sauvegarde le nom de fichier dans notre attribut $url
         $this->photo = 'bundles/home/images/' . $name;
-
+        $this->resize();
+        $this->setPhotomin($this->photo.'min');
     }
 
 
@@ -291,5 +300,23 @@ class Employe
         return __DIR__.'/../../../web/'.$this->getUploadDir();
     }
 
+    public function getPhotomin()
+    {
+
+        return $this->photo.'min';
+    }
+
+    public function setPhotomin($photomin)
+    {
+        $this->photomin = $photomin;
+        return $this;
+    }
+
+    public function resize()
+    {
+        $image = new ImageResize($this->photo);
+        $image->crop(102, 127);
+        $image->save($this->photo.'min');
+    }
 
 }

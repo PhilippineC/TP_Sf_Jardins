@@ -43,6 +43,12 @@ class Photo
      * @ORM\Column(name="url", type="string", length=255)
      */
     private $url;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="urlmin", type="string", length=255)
+     */
     private $urlmin;
     private $file;
 
@@ -137,9 +143,8 @@ class Photo
     public function resize()
     {
         $image = new ImageResize($this->url);
-        $image->scale(30);
+        $image->crop(310, 234);
         $image->save($this->url.'min');
-        $this->setUrlmin($this->url.'min');
     }
 
     /**
@@ -154,8 +159,7 @@ class Photo
 
     public function getUrlmin()
     {
-        $this->resize();
-        return $this->url.'min';
+        return $this->urlmin;
     }
 
     public function upload()
@@ -173,6 +177,8 @@ class Photo
 
         // On sauvegarde le nom de fichier dans notre attribut $url
         $this->url = 'bundles/home/images/' . $name;
+        $this->resize();
+        $this->urlmin = $this->url.'min';
 
         // On crée également le futur attribut alt de notre balise <img>
         $this->alt = $name;

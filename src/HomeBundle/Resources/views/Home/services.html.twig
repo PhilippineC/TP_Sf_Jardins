@@ -8,7 +8,7 @@
     <div class="realisations">
 
         {% for photo in listPhotos %}
-            <a href="{{ asset(photo.url)}}"><img src="{{ asset(photo.url)}}" alt="Exemple de jardin réalisé par Les Jardins d'OpenClassrooms" title="Cliquez pour agrandir" /></a>
+            <a href="{{ asset(photo.url)}}"><img src="{{ asset(photo.urlmin)}}" alt="Exemple de jardin réalisé par Les Jardins d'OpenClassrooms" title="Cliquez pour agrandir" /></a>
         {% endfor %}
     </div>
 </section>

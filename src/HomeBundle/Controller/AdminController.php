@@ -7,12 +7,15 @@ use HomeBundle\Entity\Employe;
 use HomeBundle\Entity\Photo;
 use HomeBundle\Entity\Produit;
 use HomeBundle\Form\EmployeType;
+use HomeBundle\Form\ContactType;
 use HomeBundle\Form\ProduitType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use HomeBundle\Form\PhotoType;
 use Symfony\Component\HttpFoundation\Response;
+use Doctrine\ORM\Event\LifecycleEventArgs;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 
 class AdminController extends Controller
 {
@@ -94,6 +97,7 @@ class AdminController extends Controller
     /**
      * @Security("has_role('ROLE_ADMIN')")
      */
+
     public function delete_photoAction(Photo $photo, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -241,6 +245,36 @@ class AdminController extends Controller
         }
         return $this->render('HomeBundle:Admin:delete_message.html.twig', array(
             'message' => $message,
+            'form' => $form->createView()
+        ));
+    }
+
+    public function viewhomeAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $listPhotos = $em
+            ->getRepository('HomeBundle:Photo')
+            ->findAll();
+
+        $listProduits = $em
+            ->getRepository('HomeBundle:Produit')
+            ->findAll();
+
+        $listEmployes = $em
+            ->getRepository('HomeBundle:Employe')
+            ->findAll();
+
+        // Génération du formulaire de contact
+        $contact = new Contact();
+        $contact->setDate(new \Datetime());
+
+        // On crée le Form grâce au service form factory
+        $form = $this->createForm(ContactType::class, $contact);
+
+        return $this->render('HomeBundle:Admin:viewhome.html.twig', array(
+            'listPhotos' => $listPhotos,
+            'listProduits' => $listProduits,
+            'listEmployes' => $listEmployes,
             'form' => $form->createView()
         ));
     }

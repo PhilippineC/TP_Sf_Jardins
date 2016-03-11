@@ -9,7 +9,7 @@
     <div class="contenu_produits">
         {% for produit in listProduits %}
             <div class="bloc_produits">
-                <img src="{{ asset(produit.url) }}" alt="{{ produit.alt }}"/>
+                <img src="{{ asset(produit.urlmin) }}" alt="{{ produit.alt }}"/>
                 <h2> {{ produit.nom }} </h2>
                 <p> {{ produit.description }}</p>
             </div>

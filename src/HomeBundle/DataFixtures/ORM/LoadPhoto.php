@@ -18,12 +18,12 @@ class LoadPhoto implements FixtureInterface
                 'titre'  => 'Jardin du pont',
                 'description' => 'Ipsam vero urbem Byzantiorum fuisse refertissimam atque ornatissimam signis quis ignorat? Quae illi,',
                 'url'    => 'bundles/home/images/jardin1.jpg',
-                'urlmin' => ''),
+                'urlmin' => 'bundles/home/images/jardin1.jpgmin'),
             array(
                 'titre'  => 'Jardin Breton',
                 'description' => 'Byzantiorum fuisse refertissimam atque ornatissimam signis quis ignorat? Quae illi,',
                 'url'    => 'bundles/home/images/jardin2.jpg',
-                'urlmin' => '')
+                'urlmin' => 'bundles/home/images/jardin2.jpgmin')
         );
 
         foreach ($listPhotos as $listPhoto) {
@@ -31,6 +31,7 @@ class LoadPhoto implements FixtureInterface
             $photo->setTitre($listPhoto['titre']);
             $photo->setDescription($listPhoto['description']);
             $photo->setUrl($listPhoto['url']);
+            $photo->setUrlmin($listPhoto['urlmin']);
 
             $manager->persist($photo);
         }

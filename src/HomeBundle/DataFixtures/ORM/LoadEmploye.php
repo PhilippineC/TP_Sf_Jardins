@@ -21,7 +21,8 @@ class LoadEmploye implements FixtureInterface
                 'twitter'    => 'http://www.Twitter.com/Kevin',
                 'facebook' => 'http://www.facebook.com/Kevin',
                 'linkedin' => 'http://www.linkedin.com/Kevin',
-                'photo' => 'bundles/home/images/kevin.jpg'),
+                'photo' => 'bundles/home/images/kevin.jpg',
+                'photomin' => 'bundles/home/images/kevin.jpg'),
             array(
                 'nom'  => 'Brandon',
                 'metier' => 'paysagiste',
@@ -29,7 +30,8 @@ class LoadEmploye implements FixtureInterface
                 'twitter'    => 'http://www.Twitter.com/Brandon',
                 'facebook' => 'http://www.facebook.com/Brandon',
                 'linkedin' => 'http://www.linkedin.com/Brandon',
-                'photo' => 'bundles/home/images/brandon.jpg'),
+                'photo' => 'bundles/home/images/brandon.jpg',
+                'photomin' => 'bundles/home/images/brandon.jpg'),
             array(
                 'nom'  => 'Dylan',
                 'metier' => 'paysagiste',
@@ -37,7 +39,8 @@ class LoadEmploye implements FixtureInterface
                 'twitter'    => 'http://www.Twitter.com/Dylan',
                 'facebook' => 'http://www.facebook.com/Dylan',
                 'linkedin' => 'http://www.linkedin.com/Dylan',
-                'photo' => 'bundles/home/images/dylan.jpg'),
+                'photo' => 'bundles/home/images/dylan.jpg',
+                'photomin' => 'bundles/home/images/dylan.jpg'),
             array(
                 'nom'  => 'Joey',
                 'metier' => 'paysagiste',
@@ -45,7 +48,8 @@ class LoadEmploye implements FixtureInterface
                 'twitter'    => 'http://www.Twitter.com/Joey',
                 'facebook' => 'http://www.facebook.com/Joey',
                 'linkedin' => 'http://www.linkedin.com/Joey',
-                'photo' => 'bundles/home/images/joey.png')
+                'photo' => 'bundles/home/images/joey.png',
+                'photomin' => 'bundles/home/images/joey.png')
         );
 
         foreach ($listEmployes as $listEmploye) {
@@ -57,6 +61,7 @@ class LoadEmploye implements FixtureInterface
             $employe->setFacebook($listEmploye['facebook']);
             $employe->setLinkedin($listEmploye['linkedin']);
             $employe->setPhoto($listEmploye['photo']);
+            $employe->setPhotomin($listEmploye['photomin']);
 
             $manager->persist($employe);
         }

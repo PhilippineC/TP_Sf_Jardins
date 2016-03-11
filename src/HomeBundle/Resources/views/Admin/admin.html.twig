@@ -7,27 +7,50 @@
 {% endblock %}
 
 {% block header %}
-    <div class="header_admin">
-        <div class="titre_principal">
-            <strong>Bienvenue dans l'espace Administration des Jardins d'OpenClassrooms</strong>
+    <header>
+        <div class="navbar-collapse navbar-form navbar-right">
+            {#lien de déconnexion#}
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <a class="btn btn-warning" href="{{ path('logout') }}" role="button">Déconnexion</a>
+            {% endif %}
+
         </div>
-        {#lien de déconnexion#}
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <a class="btn btn-warning col-md-offset-5" href="{{ path('logout') }}" role="button">Déconnexion</a>
-        {% endif %}
-        <hr>
-    </div>
+
+        <div class="banniere">
+            <nav>
+                <ul>
+                    <li class="logo">
+                        <img src="{{ asset('bundles/home/images/logo.png') }}" alt="Logo" title="Les Jardins d'OpenClassrooms" />
+                    </li>
+                    <li class="right"> <a href="#services">Nos services</a></li>
+                    <li class="right"> <a href="#produits">Nos produits</a></li>
+                    <li class="right"> <a href="#equipe">Notre équipe</a></li>
+                    <li class="right"> <a href="#contact">Contact</a></li>
+                    <li class="right"> <a href="{{ path('admin_viewhome') }}">Visualiser l'accueil</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </header>
 {% endblock %}
 
 {% block body %}
 
+    <div class="titre_principal">
+        <strong>Bienvenue dans l'espace Administration des Jardins d'OpenClassrooms</strong>
+    </div>
+
+
     {{ parent() }}
 
     <!-- ****************GALERIE ****************************************************************-->
-    <div class="container-fluid">
-         <div class="titre_section"> Galerie des services</div><br/>
+    <div id="services" class="container-fluid">
+        <div class="titre_sousmenu_equipe">
+            <h1>Galerie des services</h1>
+        </div>
+        <p></p>
         <a class="btn btn-primary btn-sm" href="{{ path('admin_add_photo') }}">Ajouter une photo</a><p></p>
-                <table class="table table-bordered table-striped table-condensed table-hover">
+                <table class="table table-bordered table-condensed table-hover">
                     <tbody>
                     <thead>
                     <tr>
@@ -52,13 +75,15 @@
                     </tbody>
                 </table>
     </div>
-    <hr>
 <!--************************************************************************************************ -->
 
 
 <!-- ****************PRODUITS ****************************************************************-->
-    <div class="container-fluid">
-        <div class="titre_section"> Les produits </div><br/>
+    <div id="produits" class="container-fluid">
+        <div class="produits">
+            <h1>Gestion des produits</h1>
+        </div>
+        <p></p>
         <a class="btn btn-primary btn-sm" href="{{ path('admin_add_produit') }}">Ajouter un produit</a><p></p>
                 <table class="table table-bordered table-striped table-condensed table-hover">
                     <tbody>
@@ -85,12 +110,14 @@
                     </tbody>
                 </table>
     </div>
-    <hr>
     <!--************************************************************************************************ -->
 
     <!-- ****************PROFILS ****************************************************************-->
-    <div class="container-fluid">
-        <div class="titre_section"> Gestion des profils</div><br/>
+    <div id="equipe" class="container-fluid">
+        <div class="titre_sousmenu_equipe">
+            <h1>Gestion des profils </h1>
+        </div>
+        <p></p>
         <a class="btn btn-primary btn-sm" href="{{ path('admin_add_profil') }}">Ajouter un profil</a><p></p>
                 <table class="table table-bordered table-striped table-condensed table-hover">
                     <tbody>
@@ -115,7 +142,7 @@
                             <td class="col-md-1">{{ employe.twitter| wordwrap(10) | nl2br }}</td>
                             <td class="col-md-1">{{ employe.facebook| wordwrap(10) | nl2br}}</td>
                             <td class="col-md-1">{{ employe.linkedin| wordwrap(10) | nl2br}}</td>
-                            <td class="col-md-2 text-center"><img src="{{ asset(employe.photo)}}"/></td>
+                            <td class="col-md-2 text-center"><img src="{{ asset(employe.photomin)}}"/></td>
                             <td class="col-md-3 text-center">
                                 <a class="btn btn-warning btn-sm" href="{{ path('admin_edit_profil', {'id': employe.id}) }}">Modifier</a>
                                 <a class="btn btn-danger btn-sm" href="{{ path('admin_delete_profil', {'id': employe.id}) }}">Supprimer</a>
@@ -129,8 +156,11 @@
     <!--************************************************************************************************ -->
 
     <!-- ****************MESSAGES ****************************************************************-->
-    <div class="container-fluid">
-        <div class="titre_section">Gestion des messages</div><br/>
+    <div id="contact" class="container-fluid">
+    <div class="bloc_titre_menu4">
+        <h1>Gestion des messages</h1>
+    </div>
+        <p></p>
                <table class="table table-bordered table-striped table-condensed table-hover">
                     <tbody>
                     <thead>

@@ -24,8 +24,8 @@
             {% for employe in listEmployes %}
                 <div class="profil">
                     <h2> {{ employe.nom }} </h2>
-                    <img src="{{ asset(employe.photo) }}" alt="{{ employe.nom }}" />
-                    <p>Kévin est spécialiste de l'aménagement des allées : sinueuse et longiligne.</p>
+                    <img src="{{ asset(employe.photomin) }}" alt="{{ employe.nom }}" />
+                    <p>{{ employe.biographie }}</p>
                     <div class="ico">
                         <a href="{{ asset(employe.twitter) }}"> <img src="{{ asset('bundles/home/images/twitterN.png') }}" alt="twitter"> </a>
                         <a href="{{ asset(employe.facebook) }}"> <img src="{{ asset('bundles/home/images/facebookN.png') }}" alt="facebook"> </a>

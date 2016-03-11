@@ -23,6 +23,12 @@
 
                 <button type="submit" class="btn btn-sm btn-success">Connexion</button>
             </form>
+            {#lien de retour à l'espace admin#}
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <form action="{{ path('admin') }}" method="post" class="navbar-form">
+                    <button type="submit" class="btn btn-sm btn-primary">Retour à l'espace admin</button>
+                </form>
+            {% endif %}
         </div>
 
             <div class="banniere">
@@ -46,7 +52,7 @@
 {% block body %}
     {% block messages_erreur %}
         <!-- ******************AFFICHAGE DES MESSAGES D'ERREURS ********************-->
-        {% if error %}
+        {% if error.message is defined %}
             <div class="alert alert-danger">{{ error.message }}</div>
         {% endif %}
     {% endblock %}
@@ -57,7 +63,9 @@
         {{ include("HomeBundle:Home:services.html.twig") }}
         {{ include("HomeBundle:Home:produits.html.twig") }}
         {{ include("HomeBundle:Home:equipe.html.twig") }}
-        {{ include("HomeBundle:Home:contact.html.twig") }}
+        {% if form is defined %}
+            {{ include("HomeBundle:Home:contact.html.twig") }}
+        {%  endif %}
     {% endblock %}
 
 {% endblock %}

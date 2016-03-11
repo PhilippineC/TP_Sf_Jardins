@@ -75,7 +75,7 @@
     {{ form_errors(form.file) }}
     <div class="col-sm-6">
         {% if profil.photo is defined %}
-            <img src="{{ asset(profil.photo)}}"/>
+            <img src="{{ asset(profil.photomin)}}"/>
         {% endif %}
         {{ form_widget(form.file) }}
     </div>

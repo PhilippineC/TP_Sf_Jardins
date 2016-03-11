@@ -31,7 +31,7 @@
     {{ form_errors(form.file) }}
     <div class="col-sm-6">
         {% if photo.url is defined %}
-            <img src="{{ asset(photo.url)}}"/>
+            <img src="{{ asset(photo.urlmin)}}"/>
         {% endif %}
         {{ form_widget(form.file) }}
     </div>
