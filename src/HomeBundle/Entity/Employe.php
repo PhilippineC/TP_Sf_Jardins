@@ -303,7 +303,7 @@ class Employe
     public function getPhotomin()
     {
 
-        return $this->photo.'min';
+        return $this->photomin;
     }
 
     public function setPhotomin($photomin)
